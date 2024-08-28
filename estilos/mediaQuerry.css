@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+@media screen and (min-width:768px) and (max-width: 992px){ /*Tablets*/
+    body{
+        background-image: linear-gradient(to right, #122414, #284A28);
+    }
+
+    section{
+        height: 600px;
+        margin: 0px;
+    }
+
+    div#imagem{
+        float: left;
+        width: 40%;
+        height: 100%;
+        border-radius: 20px 0px 0px 20px;
+    }
+
+    div#conteudo{
+        float: right;
+        width: 60%;
+        border-radius: 0px 20px 20px 0px;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width:992px) and (max-width:1200px){ /*Desktop*/
+    body{
+        background-image: linear-gradient(to left, #122414, #284A28);
+    }
+
+    div#idmedia, div#idpontosPassar{
+        margin-bottom: 20px;
+    }
+
+    div#opt1, div#opt2{
+        display: inline-block;
+    }
+
+    section{
+        height: 530px;
+        margin: 0px;
+        width: 900px;
+    }
+
+    div#imagem{
+        float: right;
+        width: 30%;
+        height: 100%;
+        border-radius: 0px 20px 20px 0px;
+    }
+
+    div#conteudo{
+        float: left;
+        width: 70%;
+        border-radius: 20px 0px 0px 20px;
+        height: 530px;
+    }
+}
+
+@media screen and (min-width:1200px){ /*Telas grandes*/
+    body{
+        background-image: linear-gradient(to left, #122414, #284A28);
+    }
+
+    body main{
+        margin-bottom: 10px;
+    }
+
+    div#idmedia, div#idpontosPassar{
+        margin-bottom: 10px;
+    }
+
+    div#opt1, div#opt2{
+        display: inline-block;
+    }
+
+    section{
+        height: 500px;
+        margin: 0px;
+        width: 1100px;
+    }
+
+    div#imagem{
+        float: right;
+        width: 30%;
+        height: 100%;
+        border-radius: 0px 20px 20px 0px;
+    }
+
+    div#conteudo{
+        float: left;
+        width: 70%;
+        border-radius: 20px 0px 0px 20px;
+        height: 500px;
+    }
+
+}
+
+@media screen and (min-height:300px) and (max-height:600px) and (min-width:768px) and (max-width: 992px){
+    body{
+        background-image: linear-gradient(to right, #122414, #284A28);
+        font-size: 0.8em;
+    }
+
+    body main{
+        margin-bottom: 2px;
+    }
+
+    header, header>p, header>h1{
+        margin: 10px;
+        padding: 0px;
+    }
+
+    p#txtTopo{
+        margin: 0px;
+    }
+
+    section{
+        height: 75vh;
+        margin: 0px;
+        padding: 5px;
+    }
+
+    div#opt1,div#opt2{
+        display: inline-block;
+    }
+
+    div#idmedia{
+        margin-top: 10px;
+        margin-bottom: 0px;
+        font-size: 0.8em;
+    }
+
+    div#idmedia input{
+        font-size: 0.8em;
+    }
+
+    p#res, p#resul{
+        font-size: 0.8em;
+    }
+
+    div#imagem{
+        float: left;
+        width: 20%;
+        height: 100%;
+        border-radius: 20px 0px 0px 20px;
+    }
+
+    div#conteudo{
+        float: right;
+        width: 80%;
+        border-radius: 0px 20px 20px 0px;
+        height: 100%;
+    }
+
+    button{
+        font-size: 0.8em;
+        width: 150px;
+    }
+
+    div#conteudo main{
+        font-size: 0.8em;
+    }
+
+    footer > p{
+        margin: 0px;
+        font-size: 0.8em;
+    }
+}

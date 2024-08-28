@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de notas</title>
+    <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="estilos/mediaQuerry.css">
+</head>
+<body>
+    <section>
+        <div id="imagem">
+
+        </div>
+
+        <div id="conteudo">
+            <header>
+                <h1>Olá, seja bem vindo(a) ao site</h1>
+                <p id="txtTopo">Aqui você podera saber quantos pontos precisa para passar em uma matéria e pode também saber se foi aprovado ou não. Siga as orientações abaixo para melhor experiência!</p>
+            </header>
+            <main>
+
+                <p>O que você deseja saber:</p>
+
+                <div id="opt1">
+                    <input type="radio" name="option" id="imedia" onclick="media()"> <label for="imedia">Calcular a média</label>
+                </div>
+
+                <div id="opt2">
+                    <input type="radio" name="option" id="ipontosPassar" onclick="pontosPassar()" value="2"><label for="ipontosPassar">Saber quantos pontos falta para passar</label>
+                </div>
+
+                <div id="idmedia">
+                    <p>
+                        <label for="iN1">Digite a sua <strong>primeira</strong> nota:</label>
+                        <input type="number" name="N1" id="iN1" max="10" min="0" step="0.1" required>
+                    </p>
+
+                    <p>
+                        <label for="iN2">Digite a sua <strong>segunda</strong> nota:</label>
+                        <input type="number" name="N2" id="iN2" max="10" min="0" step="0.1" required>
+                    </p>
+
+                    <p>
+                        <label for="iAI">Digite a sua nota da <strong>AI</strong>:</label>
+                        <input type="number" name="AI" id="iAI" max="1" min="0" step="0.1" required>
+                    </p>
+
+                    <p id="res"></p>
+
+                    <button onclick="rMedia()">Calcular sua média</button>
+                </div>
+
+                <div id="idpontosPassar">
+                    <p>
+                        <label for="inota1">Digite a sua primeira nota:</label>
+                        <input type="number" name="nota1" id="inota1" required max="10" min="0" step="0.1">
+                    </p>
+                    <p id="resul"></p>
+                    <button onclick="rPontosPassar()">Saber quanto precisa tirar na N2</button>
+                </div>
+            </main>
+            <footer>
+                <p id="pfim">Site desenvolvido por <a href="https://www.instagram.com/marcola.classic" target="_blank">@Marcos Vinicius</a></p>
+            </footer>
+        </div>
+    </section>
+    
+
+    <script>
+        function media(){
+            if(innerHeight >= 300 && innerHeight <=600){
+                document.querySelector('#txtTopo').style.display = 'none';
+            }
+            if(document.querySelector('#idmedia').style.display == 'block'){
+                document.querySelector('#idmedia').style.display = 'none';
+            }else{
+                document.querySelector('#idmedia').style.display = 'block';
+            }
+
+            if(document.querySelector('#idpontosPassar').style.display == 'block'){
+                document.querySelector('#idpontosPassar').style.display = 'none';
+            }
+        }
+
+        function rMedia(){
+            let n1 = parseFloat(document.querySelector('#iN1').value);
+            let n2 = parseFloat(document.querySelector('#iN2').value);
+            let ai = parseFloat(document.querySelector('#iAI').value);
+
+            const inp1 = document.querySelector('#iN1').value.trim();
+            const inp2 = document.querySelector('#iN2').value.trim();
+            const inp3 = document.querySelector('#iAI').value.trim();
+
+            if(document.querySelector('#iN1').value > 10 || document.querySelector('#iN1').value < 0){
+                window.alert("[ATENÇÃO N1 ESTÁ INVÁLIDA] DIGITA APENAS VALORES MENORES QUE 10 E MAIORES QUE 0!!");
+            }
+            if(document.querySelector('#iN2').value > 9 || document.querySelector('#iN2').value < 0){
+                window.alert("[ATENÇÃO N2 ESTÁ INVÁLIDA] DIGITA APENAS VALORES MENORES QUE 9 E MAIORES QUE 0!!");
+            }
+            if(document.querySelector('#iAI').value > 1 || document.querySelector('#iAI').value < 0){
+                window.alert("[ATENÇÃO NOTA AI ESTÁ INVÁLIDA] DIGITE APENAS VALORES MENORES QUE 1 E MAIORES QUE 0!!");
+            }
+            if(!inp1 || !inp2 || !inp3){
+                window.alert("[ATENÇÃO] ALGUNS CAMPOS ESTÃO VAZIOS. PREENCHA-OS CORRETAMENTE!!");
+            }
+
+            let media = (n1*0.4)+((n2+ai)*0.6);
+            document.querySelector('#res').style.display = 'block';
+            if(media>=6 && media<=10 && ai<=1 && ai >= 0 && n1 >= 0 && n1<=10 && n2 <= 9 && n2>=0){
+                document.querySelector('#res').innerHTML = "<p>Você foi APROVADO</p> <p>Sua média final foi " + media.toFixed(2) + "</p>";
+            }else{
+                if(media<6 && media >=0 && ai<=1 && ai >= 0 && n1 >= 0 && n1<=10 && n2 <= 9 && n2>=0){
+                    document.querySelector('#res').innerHTML = "<p>Você foi REPROVADO</p> <p>Sua média final foi " + media.toFixed(2) + "</p>";
+                }else{
+                    document.querySelector('#res').style.display = 'none';
+                }
+            }
+        }
+
+        function pontosPassar(){
+            document.querySelector('#txtTopo').style.display = 'block';
+            if(document.querySelector('#idpontosPassar').style.display == 'block'){
+                document.querySelector('#idpontosPassar').style.display = 'none';
+            }else{
+                document.querySelector('#idpontosPassar').style.display = 'block';
+            }
+
+            if(document.querySelector('#idmedia').style.display == 'block'){
+                document.querySelector('#idmedia').style.display = 'none';
+            }
+        }
+
+        function rPontosPassar(){
+            let nota1 = parseFloat(document.querySelector('#inota1').value);
+            let n2 = (6-(nota1*0.4))/0.6;
+            const input1 = document.querySelector('#inota1').value.trim();
+
+            if(document.querySelector('#inota1').value < 0 || document.querySelector('#inota1').value > 10){
+                window.alert("[ATENÇÃO N1 ESTÁ INVÁLIDA] DIGITA APENAS VALORES MENORES QUE 10 E MAIORES QUE 0!!");
+            }
+            if(!input1){
+                window.alert("[ATENÇÃO] ALGUNS CAMPOS ESTÃO VAZIOS. PREENCHA-OS CORRETAMENTE!!");
+            }
+            if(n2>=0 && n2<=10 && nota1<=10 && nota1 >= 0){
+                document.querySelector('#resul').style.display = 'block';
+            }else{
+                document.querySelector('#resul').style.display = 'none';
+            }
+
+            document.querySelector('#resul').innerHTML = `<p>Desconsiderando a nota da AI, para você atingir a média é necessário tirar ${n2.toFixed(2)} na prova de N2</p>`;
+        }
+    </script>
+</body>
+</html>
